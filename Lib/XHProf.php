@@ -27,6 +27,13 @@ class XHProf {
 	);
 
 /**
+ * Whether profiling has started or not
+ *
+ * @var boolean
+ */
+	protected static $_started = false;
+
+/**
  * Start xhprof profiler
  *
  * ### Options
@@ -49,6 +56,18 @@ class XHProf {
 		xhprof_enable($options['flags'], array(
 			'ignored_functions' => $options['ignored_functions'],
 		));
+
+		// Set as started
+		self::$_started = true;
+	}
+
+/**
+ * Whether profiling has started or not
+ *
+ * @return boolean
+ */
+	public static function started() {
+		return self::$_started;
 	}
 
 /**
@@ -57,6 +76,9 @@ class XHProf {
  * @return array Profiler data from the run
  */
 	public static function stop() {
+		// Reset started
+		self::$_started = false;
+
 		return xhprof_disable();
 	}
 
