@@ -23,7 +23,10 @@ class XHProf {
 		'namespace' => APP_DIR,
 		'library' => null,
 		'flags' => 0,
-		'ignored_functions' => array(),
+		'ignored_functions' => array(
+			'call_user_func',
+			'call_user_func_array',
+		),
 	);
 
 /**
