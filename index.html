@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>CakePHP XHProf Plugin by renansaddam</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>CakePHP XHProf Plugin</h1>
+        <p>Plugin that quickly enables XHProf profiling for your CakePHP application.</p>
+        <p class="view"><a href="https://github.com/renansaddam/CakePHP-XHProf-Plugin">View the Project on GitHub <small>renansaddam/CakePHP-XHProf-Plugin</small></a></p>
+        <ul>
+          <li><a href="https://github.com/renansaddam/CakePHP-XHProf-Plugin/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/renansaddam/CakePHP-XHProf-Plugin/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/renansaddam/CakePHP-XHProf-Plugin">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>CakePHP XHProf Plugin <a href="http://travis-ci.org/renansaddam/CakePHP-XHProf-Plugin"><img src="https://secure.travis-ci.org/renansaddam/CakePHP-XHProf-Plugin.png" alt="Build Status"></a>
+</h1>
+
+<p>Plugin that quickly enables XHProf profiling for your CakePHP application.</p>
+
+<h2>Requirements</h2>
+
+<ul>
+<li>PHP 5.2+</li>
+<li>XHProf</li>
+<li>CakePHP 2.1+ (2.2+ is needed for using the Dispatcher Filter)</li>
+</ul><h2>Installation</h2>
+
+<h3>Manual</h3>
+
+<ol>
+<li>Download <a href="http://github.com/renansaddam/CakePHP-XHProf-Plugin/zipball/master">http://github.com/renansaddam/CakePHP-XHProf-Plugin/zipball/master</a>
+</li>
+<li>Unzip the downloaded file</li>
+<li>Move the contents to <code>app/Plugin/XHProf</code>
+</li>
+</ol><h3>Git Submodule</h3>
+
+<div class="highlight"><pre>git submodule add git://github.com/renansaddam/CakePHP-XHProf-Plugin.git app/Plugin/XHProf
+git submodule update --init
+</pre></div>
+
+<h3>Git Clone</h3>
+
+<div class="highlight"><pre>git clone git://github.com/renansaddam/CakePHP-XHProf-Plugin.git app/Plugin/XHProf
+</pre></div>
+
+<h2>Configuration</h2>
+
+<p>The basic configuration consists in loading the plugin and pointing where the <code>xhprof_lib</code> directory is located on your system.</p>
+
+<p>On your <code>app/Config/bootstrap.php</code> file:</p>
+
+<div class="highlight"><pre><span class="c1">// Load XHProf Plugin</span>
+<span class="nx">CakePlugin</span><span class="o">::</span><span class="na">load</span><span class="p">(</span><span class="s1">'XHProf'</span><span class="p">);</span>
+
+<span class="c1">// XHProf Configuration</span>
+<span class="nx">Configure</span><span class="o">::</span><span class="na">write</span><span class="p">(</span><span class="s1">'XHProf'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'library'</span> <span class="o">=&gt;</span> <span class="s1">'/usr/local/Cellar/php54-xhprof/270b75d/xhprof_lib'</span><span class="p">,</span>
+<span class="p">));</span>
+</pre></div>
+
+<p>Options:</p>
+
+<ul>
+<li>
+<code>library</code>: Path to your xhprof_lib directory (required)</li>
+<li>
+<code>namespace</code>: Namespace to save your xhprof runs, default is your application directory name</li>
+<li>
+<code>flags</code>: Flags passed over to profiler, default is <code>0</code>. For a list of flags visit: <a href="http://php.net/xhprof.constants.php">http://php.net/xhprof.constants.php</a>
+</li>
+<li>
+<code>ignored_functions</code>: Array of functions to ignore, default is <code>call_user_func</code> and <code>call_user_func_array</code>
+</li>
+<li>
+<code>replaceRunId</code>: Placeholder used to replace the run id in order to display a link in the page, set <code>false</code> to disable, default is <code>%XHProfRunId%</code>. Read the usage for more information</li>
+</ul><p>All options example:</p>
+
+<div class="highlight"><pre><span class="nx">Configure</span><span class="o">::</span><span class="na">write</span><span class="p">(</span><span class="s1">'XHProf'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'library'</span> <span class="o">=&gt;</span> <span class="s1">'/usr/local/Cellar/php54-xhprof/270b75d/xhprof_lib'</span><span class="p">,</span>
+    <span class="s1">'namespace'</span> <span class="o">=&gt;</span> <span class="s1">'myapp'</span><span class="p">,</span>
+    <span class="s1">'flags'</span> <span class="o">=&gt;</span> <span class="nx">XHPROF_FLAGS_CPU</span> <span class="o">|</span> <span class="nx">XHPROF_FLAGS_MEMORY</span><span class="p">,</span>
+    <span class="s1">'ignored_functions'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">'my_function'</span><span class="p">,</span>
+        <span class="s1">'my_other_function'</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="s1">'replaceRunId'</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+<span class="p">));</span>
+</pre></div>
+
+<h2>Usage</h2>
+
+<h3>Dispatcher Filter</h3>
+
+<p>Just include the <code>XHProfDispatcher</code> on your dispatcher filters list on <code>app/Config/bootstrap.php</code>:</p>
+
+<div class="highlight"><pre><span class="nx">Configure</span><span class="o">::</span><span class="na">write</span><span class="p">(</span><span class="s1">'Dispatcher.filters'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'XHProf.XHProfDispatcher'</span><span class="p">,</span>
+<span class="p">));</span>
+</pre></div>
+
+<p>By default it will try replace <code>%replaceRunId%</code> to the saved run id from the page's output. It allows you to include a link to the xhprof report on the page.</p>
+
+<p>On your <code>app/View/Layouts/default.ctp</code>:</p>
+
+<div class="highlight"><pre><span class="nv">$url</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span>
+    <span class="s1">'/path/to/xhprof_html/index.php?run=%s&amp;source=%s'</span><span class="p">,</span>
+    <span class="s1">'%XHProfRunId%'</span><span class="p">,</span>
+    <span class="nx">Configure</span><span class="o">::</span><span class="na">read</span><span class="p">(</span><span class="s1">'XHProf.namespace'</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">(</span><span class="s1">'XHProf Output'</span><span class="p">,</span> <span class="nv">$url</span><span class="p">);</span>
+</pre></div>
+
+<h3>Manual</h3>
+
+<p>This method is very useful when profiling specific points on your code.
+For that, just use the <code>XHProf</code> class to assist you.</p>
+
+<p>Example:</p>
+
+<div class="highlight"><pre><span class="c1">// Declare the class location</span>
+<span class="nx">App</span><span class="o">::</span><span class="na">uses</span><span class="p">(</span><span class="s1">'XHProf'</span><span class="p">,</span> <span class="s1">'XHProf.Lib'</span><span class="p">);</span>
+
+<span class="c1">// Start the profiler</span>
+<span class="nx">XHProf</span><span class="o">::</span><span class="na">start</span><span class="p">();</span>
+
+
+<span class="c1">// ... your application code</span>
+
+
+<span class="c1">// Stop the profiler</span>
+<span class="c1">// 1. Returning the profiler data</span>
+<span class="nv">$data</span> <span class="o">=</span> <span class="nx">XHProf</span><span class="o">::</span><span class="na">stop</span><span class="p">();</span>
+
+<span class="c1">// 2. or Save the profiler data, returning the run id</span>
+<span class="nv">$runId</span> <span class="o">=</span> <span class="nx">XHProf</span><span class="o">::</span><span class="na">finish</span><span class="p">();</span>
+</pre></div>
+
+<p><em>Note</em>: There are two ways to stop the profiler as explained above. However only one can be used at each run.</p>
+
+<h2>License</h2>
+
+<p>Copyright (c) 2012 Renan Gonçalves</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/renansaddam">renansaddam</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
