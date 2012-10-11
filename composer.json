@@ -15,5 +15,10 @@
 		"php": ">=5.2",
 		"ext-xhprof": "*",
 		"composer/installers": "*"
+	},
+	"extra": {
+		"installer-paths": {
+			"Plugin/XHProf/": ["renansaddam/cakephp-xhprof-plugin"]
+		}
 	}
 }
