@@ -1,0 +1,19 @@
+{
+	"name": "renansaddam/CakePHP-XHProf-Plugin",
+	"type": "cakephp-plugin",
+	"description": "Plugin that quickly enables XHProf profiling for your CakePHP application.",
+	"keywords": ["CakePHP", "XHProf", "debug", "profiling"],
+	"homepage": "http://github.com/renansaddam/CakePHP-XHProf-Plugin",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Renan Gonçalves",
+			"email": "renan.saddam@gmail.com"
+		}
+	],
+	"require": {
+		"php": ">=5.2",
+		"ext-xhprof": "*",
+		"composer/installers": "*"
+	}
+}
