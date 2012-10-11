@@ -1,20 +1,6 @@
 <?php
 
-App::uses('XHProf', 'XHProf.Lib');
-
-/**
- * XHProf Extended class to set the state of it
- *
- */
-class TestXHProf extends XHProf {
-	public static function reset() {
-		self::$_initiated = false;
-
-		if (self::started()) {
-			self::stop();
-		}
-	}
-}
+App::uses('TestXHProf', 'XHProf.Test/Lib');
 
 /**
  * XHProf test case
@@ -39,7 +25,7 @@ class XHProfTest extends CakeTestCase {
  * @return void
  */
 	public function testStartStop() {
-		$XHProf = $this->getMockClass('XHProf', array(
+		$XHProf = $this->getMockClass('TestXHProf', array(
 			'_initialize',
 		));
 
@@ -63,7 +49,7 @@ class XHProfTest extends CakeTestCase {
  * @return void
  */
 	public function testStartFinish() {
-		$XHProf = $this->getMockClass('XHProf', array(
+		$XHProf = $this->getMockClass('TestXHProf', array(
 			'_initialize',
 		));
 

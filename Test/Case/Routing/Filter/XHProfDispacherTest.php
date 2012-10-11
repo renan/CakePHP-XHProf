@@ -11,6 +11,17 @@ App::uses('CakeResponse', 'Network');
 class XHProfDispatcherTest extends CakeTestCase {
 
 /**
+ * tearDown method
+ *
+ * @return void
+ */
+	public function tearDown() {
+		parent::tearDown();
+
+		TestXHProf::reset();
+	}
+
+/**
  * Test that beforeDispatcher replaces run id
  *
  * @return void
