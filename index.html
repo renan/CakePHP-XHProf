@@ -59,6 +59,20 @@ git submodule update --init
 <div class="highlight"><pre>git clone git://github.com/renansaddam/CakePHP-XHProf-Plugin.git app/Plugin/XHProf
 </pre></div>
 
+<h3>Composer / Packagist</h3>
+
+<div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">"require"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"renansaddam/cakephp-xhprof-plugin"</span><span class="p">:</span> <span class="s2">"dev-master"</span>
+    <span class="p">},</span>
+    <span class="nt">"extra"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"installer-paths"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">"Plugin/XHProf/"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"renansaddam/cakephp-xhprof-plugin"</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
 <h2>Configuration</h2>
 
 <p>The basic configuration consists in loading the plugin and pointing where the <code>xhprof_lib</code> directory is located on your system.</p>
@@ -139,9 +153,7 @@ For that, just use the <code>XHProf</code> class to assist you.</p>
 <span class="c1">// Start the profiler</span>
 <span class="nx">XHProf</span><span class="o">::</span><span class="na">start</span><span class="p">();</span>
 
-
 <span class="c1">// ... your application code</span>
-
 
 <span class="c1">// Stop the profiler</span>
 <span class="c1">// 1. Returning the profiler data</span>
