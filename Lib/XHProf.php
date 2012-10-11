@@ -117,17 +117,19 @@ class XHProf {
 		Configure::write('XHProf', $options);
 
 		// Include libraries
-		$path = $options['library'] . DS . 'utils' . DS;
-		$files = array(
-			$path . 'xhprof_lib.php',
-			$path . 'xhprof_runs.php',
-		);
-		foreach ($files as $file) {
-			if (!include($file)) {
-				throw new RuntimeException(sprintf(
-					'Couldn\'t include library file: %s.',
-					$file
-				));
+		if (!class_exists('XHProfRuns_Default')) {
+			$path = $options['library'] . DS . 'utils' . DS;
+			$files = array(
+				$path . 'xhprof_lib.php',
+				$path . 'xhprof_runs.php',
+			);
+			foreach ($files as $file) {
+				if (!include($file)) {
+					throw new RuntimeException(sprintf(
+						'Couldn\'t include library file: %s.',
+						$file
+					));
+				}
 			}
 		}
 
