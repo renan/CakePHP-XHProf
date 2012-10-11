@@ -1,5 +1,5 @@
 {
-	"name": "renansaddam/CakePHP-XHProf-Plugin",
+	"name": "renansaddam/cakephp-xhprof-plugin",
 	"type": "cakephp-plugin",
 	"description": "Plugin that quickly enables XHProf profiling for your CakePHP application.",
 	"keywords": ["CakePHP", "XHProf", "debug", "profiling"],
