@@ -29,6 +29,21 @@ git submodule update --init
 git clone git://github.com/renansaddam/CakePHP-XHProf-Plugin.git app/Plugin/XHProf
 ```
 
+### Composer / Packagist
+
+```json
+{
+	"require": {
+		"renansaddam/cakephp-xhprof-plugin": "dev-master"
+	},
+	"extra": {
+		"installer-paths": {
+			"Plugin/XHProf/": ["renansaddam/cakephp-xhprof-plugin"]
+		}
+	}
+}
+```
+
 ## Configuration
 
 The basic configuration consists in loading the plugin and pointing where the `xhprof_lib` directory is located on your system.
@@ -107,9 +122,7 @@ App::uses('XHProf', 'XHProf.Lib');
 // Start the profiler
 XHProf::start();
 
-
 // ... your application code
-
 
 // Stop the profiler
 // 1. Returning the profiler data
