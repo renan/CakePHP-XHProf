@@ -4,8 +4,8 @@ Plugin that quickly enables XHProf profiling for your CakePHP application.
 
 ## Requirements
 
-* PHP 5.2+ (5.3+ is needed for running tests)
-* CakePHP 2.1+ (2.2+ is needed for using the Dispatcher Filter)
+* PHP 5.3+
+* CakePHP 2.2+
 * XHProf
 
 ## Installation
