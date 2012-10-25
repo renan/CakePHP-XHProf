@@ -1,12 +1,12 @@
-# CakePHP XHProf Plugin [![Build Status](https://secure.travis-ci.org/renansaddam/CakePHP-XHProf-Plugin.png)](http://travis-ci.org/renansaddam/CakePHP-XHProf-Plugin)
+# CakePHP XHProf Plugin [![Build Status](https://secure.travis-ci.org/renansaddam/CakePHP-XHProf-Plugin.png?branch=master)](http://travis-ci.org/renansaddam/CakePHP-XHProf-Plugin)
 
 Plugin that quickly enables XHProf profiling for your CakePHP application.
 
 ## Requirements
 
-* PHP 5.2+
-* XHProf
+* PHP 5.2+ (5.3+ is needed for running tests)
 * CakePHP 2.1+ (2.2+ is needed for using the Dispatcher Filter)
+* XHProf
 
 ## Installation
 
@@ -90,19 +90,17 @@ Configure::write('XHProf', array(
 Just include the `XHProfDispatcher` on your dispatcher filters list on `app/Config/bootstrap.php`:
 
 ```php
-Configure::write('Dispatcher.filters', array(
-	'XHProf.XHProfDispatcher',
-));
+Configure::write('Dispatcher.filters.xhprof', 'XHProf.XHProfDispatcher');
 ```
 
-By default it will try replace `%replaceRunId%` to the saved run id from the page's output. It allows you to include a link to the xhprof report on the page.
+By default it will try replace `%XHProfRunId%` to the saved run id from the page's output. It allows you to include a link to the xhprof report on the page.
 
 On your `app/View/Layouts/default.ctp`:
 
 ```php
 $url = sprintf(
-	'/path/to/xhprof_html/index.php?run=%s&source=%s',
-	'%XHProfRunId%',
+	'/url/to/xhprof_html/index.php?run=%s&source=%s',
+	Configure::read('XHProf.replaceRunId'),
 	Configure::read('XHProf.namespace')
 );
 echo $this->Html->link('XHProf Output', $url);
