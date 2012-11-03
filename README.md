@@ -136,7 +136,7 @@ _Note_: There are two ways to stop the profiler as explained above. However only
 
 ## Changelog
 
-### 0.1.0
+### 0.1.0 (2012-11-03)
 
 Initial release
 
