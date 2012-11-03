@@ -31,10 +31,12 @@ git clone git://github.com/renansaddam/CakePHP-XHProf-Plugin.git app/Plugin/XHPr
 
 ### Composer / Packagist
 
+Extra information can be found at [Packagist](https://packagist.org/packages/renansaddam/cakephp-xhprof-plugin).
+
 ```json
 {
 	"require": {
-		"renansaddam/cakephp-xhprof-plugin": "dev-master"
+		"renansaddam/cakephp-xhprof-plugin": "0.1.*"
 	},
 	"extra": {
 		"installer-paths": {
@@ -131,6 +133,12 @@ $runId = XHProf::finish();
 ```
 
 _Note_: There are two ways to stop the profiler as explained above. However only one can be used at each run.
+
+## Changelog
+
+### 0.1.0
+
+Initial release
 
 ## License
 

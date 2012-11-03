@@ -19,6 +19,9 @@
 	"extra": {
 		"installer-paths": {
 			"Plugin/XHProf/": ["renansaddam/cakephp-xhprof-plugin"]
+		},
+		"branch-alias": {
+			"dev-master": "0.1.x-dev"
 		}
 	}
 }
