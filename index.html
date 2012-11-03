@@ -27,7 +27,7 @@
         </ul>
       </header>
       <section>
-        <h1>CakePHP XHProf Plugin <a href="http://travis-ci.org/renansaddam/CakePHP-XHProf-Plugin"><img src="https://secure.travis-ci.org/renansaddam/CakePHP-XHProf-Plugin.png" alt="Build Status"></a>
+        <h1>CakePHP XHProf Plugin <a href="http://travis-ci.org/renansaddam/CakePHP-XHProf-Plugin"><img src="https://secure.travis-ci.org/renansaddam/CakePHP-XHProf-Plugin.png?branch=master" alt="Build Status"></a>
 </h1>
 
 <p>Plugin that quickly enables XHProf profiling for your CakePHP application.</p>
@@ -35,9 +35,9 @@
 <h2>Requirements</h2>
 
 <ul>
-<li>PHP 5.2+</li>
+<li>PHP 5.3+</li>
+<li>CakePHP 2.2+</li>
 <li>XHProf</li>
-<li>CakePHP 2.1+ (2.2+ is needed for using the Dispatcher Filter)</li>
 </ul><h2>Installation</h2>
 
 <h3>Manual</h3>
@@ -61,9 +61,11 @@ git submodule update --init
 
 <h3>Composer / Packagist</h3>
 
+<p>Extra information can be found at <a href="https://packagist.org/packages/renansaddam/cakephp-xhprof-plugin">Packagist</a>.</p>
+
 <div class="highlight"><pre><span class="p">{</span>
     <span class="nt">"require"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">"renansaddam/cakephp-xhprof-plugin"</span><span class="p">:</span> <span class="s2">"dev-master"</span>
+        <span class="nt">"renansaddam/cakephp-xhprof-plugin"</span><span class="p">:</span> <span class="s2">"0.1.*"</span>
     <span class="p">},</span>
     <span class="nt">"extra"</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">"installer-paths"</span><span class="p">:</span> <span class="p">{</span>
@@ -123,18 +125,16 @@ git submodule update --init
 
 <p>Just include the <code>XHProfDispatcher</code> on your dispatcher filters list on <code>app/Config/bootstrap.php</code>:</p>
 
-<div class="highlight"><pre><span class="nx">Configure</span><span class="o">::</span><span class="na">write</span><span class="p">(</span><span class="s1">'Dispatcher.filters'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">'XHProf.XHProfDispatcher'</span><span class="p">,</span>
-<span class="p">));</span>
+<div class="highlight"><pre><span class="nx">Configure</span><span class="o">::</span><span class="na">write</span><span class="p">(</span><span class="s1">'Dispatcher.filters.xhprof'</span><span class="p">,</span> <span class="s1">'XHProf.XHProfDispatcher'</span><span class="p">);</span>
 </pre></div>
 
-<p>By default it will try replace <code>%replaceRunId%</code> to the saved run id from the page's output. It allows you to include a link to the xhprof report on the page.</p>
+<p>By default it will try replace <code>%XHProfRunId%</code> to the saved run id from the page's output. It allows you to include a link to the xhprof report on the page.</p>
 
 <p>On your <code>app/View/Layouts/default.ctp</code>:</p>
 
 <div class="highlight"><pre><span class="nv">$url</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span>
-    <span class="s1">'/path/to/xhprof_html/index.php?run=%s&amp;source=%s'</span><span class="p">,</span>
-    <span class="s1">'%XHProfRunId%'</span><span class="p">,</span>
+    <span class="s1">'/url/to/xhprof_html/index.php?run=%s&amp;source=%s'</span><span class="p">,</span>
+    <span class="nx">Configure</span><span class="o">::</span><span class="na">read</span><span class="p">(</span><span class="s1">'XHProf.replaceRunId'</span><span class="p">),</span>
     <span class="nx">Configure</span><span class="o">::</span><span class="na">read</span><span class="p">(</span><span class="s1">'XHProf.namespace'</span><span class="p">)</span>
 <span class="p">);</span>
 <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">(</span><span class="s1">'XHProf Output'</span><span class="p">,</span> <span class="nv">$url</span><span class="p">);</span>
@@ -164,6 +164,12 @@ For that, just use the <code>XHProf</code> class to assist you.</p>
 </pre></div>
 
 <p><em>Note</em>: There are two ways to stop the profiler as explained above. However only one can be used at each run.</p>
+
+<h2>Changelog</h2>
+
+<h3>0.1.0 (2012-11-03)</h3>
+
+<p>Initial release</p>
 
 <h2>License</h2>
 
