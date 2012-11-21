@@ -14,34 +14,31 @@ Plugin that quickly enables XHProf profiling for your CakePHP application.
 
 1. Download http://github.com/renansaddam/CakePHP-XHProf-Plugin/zipball/master
 2. Unzip the downloaded file
-3. Move the contents to `app/Plugin/XHProf`
+3. Move the contents to `Plugin/XHProf`
 
 ### Git Submodule
 
 ```bash
-git submodule add git://github.com/renansaddam/CakePHP-XHProf-Plugin.git app/Plugin/XHProf
+git submodule add git://github.com/renansaddam/CakePHP-XHProf-Plugin.git Plugin/XHProf
 git submodule update --init
 ```
 
 ### Git Clone
 
 ```bash
-git clone git://github.com/renansaddam/CakePHP-XHProf-Plugin.git app/Plugin/XHProf
+git clone git://github.com/renansaddam/CakePHP-XHProf-Plugin.git Plugin/XHProf
 ```
 
 ### Composer / Packagist
 
 Extra information can be found at [Packagist](https://packagist.org/packages/renansaddam/cakephp-xhprof-plugin).
 
+This would install the latest 0.1 version to `Plugin/XHProf`:
+
 ```json
 {
 	"require": {
 		"renansaddam/cakephp-xhprof-plugin": "0.1.*"
-	},
-	"extra": {
-		"installer-paths": {
-			"Plugin/XHProf/": ["renansaddam/cakephp-xhprof-plugin"]
-		}
 	}
 }
 ```
@@ -50,7 +47,7 @@ Extra information can be found at [Packagist](https://packagist.org/packages/ren
 
 The basic configuration consists in loading the plugin and pointing where the `xhprof_lib` directory is located on your system.
 
-On your `app/Config/bootstrap.php` file:
+On your `Config/bootstrap.php` file:
 
 ```php
 // Load XHProf Plugin
@@ -89,7 +86,7 @@ Configure::write('XHProf', array(
 
 ### Dispatcher Filter
 
-Just include the `XHProfDispatcher` on your dispatcher filters list on `app/Config/bootstrap.php`:
+Just include the `XHProfDispatcher` on your dispatcher filters list on `Config/bootstrap.php`:
 
 ```php
 Configure::write('Dispatcher.filters.xhprof', 'XHProf.XHProfDispatcher');
@@ -97,7 +94,7 @@ Configure::write('Dispatcher.filters.xhprof', 'XHProf.XHProfDispatcher');
 
 By default it will try replace `%XHProfRunId%` to the saved run id from the page's output. It allows you to include a link to the xhprof report on the page.
 
-On your `app/View/Layouts/default.ctp`:
+On your `View/Layouts/default.ctp`:
 
 ```php
 $url = sprintf(
