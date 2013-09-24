@@ -3,13 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>CakePHP XHProf Plugin by renansaddam</title>
+    <title>CakePHP XHProf Plugin by renan</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <script src="javascripts/scale.fix.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -17,71 +16,80 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>CakePHP XHProf Plugin</h1>
-        <p>Plugin that quickly enables XHProf profiling for your CakePHP application.</p>
-        <p class="view"><a href="https://github.com/renansaddam/CakePHP-XHProf-Plugin">View the Project on GitHub <small>renansaddam/CakePHP-XHProf-Plugin</small></a></p>
+        <h1 class="header">CakePHP XHProf Plugin</h1>
+        <p class="header">Plugin that quickly enables XHProf profiling for your CakePHP application.</p>
+
         <ul>
-          <li><a href="https://github.com/renansaddam/CakePHP-XHProf-Plugin/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/renansaddam/CakePHP-XHProf-Plugin/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/renansaddam/CakePHP-XHProf-Plugin">View On <strong>GitHub</strong></a></li>
+          <li class="download"><a class="buttons" href="https://github.com/renan/CakePHP-XHProf/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/renan/CakePHP-XHProf/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/renan/CakePHP-XHProf">View On GitHub</a></li>
         </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/renan">renan</a></p>
+
+
       </header>
       <section>
-        <h1>CakePHP XHProf Plugin <a href="http://travis-ci.org/renansaddam/CakePHP-XHProf-Plugin"><img src="https://secure.travis-ci.org/renansaddam/CakePHP-XHProf-Plugin.png?branch=master" alt="Build Status"></a>
+        <h1>
+<a name="cakephp-xhprof-plugin-" class="anchor" href="#cakephp-xhprof-plugin-"><span class="octicon octicon-link"></span></a>CakePHP XHProf Plugin <a href="http://travis-ci.org/renan/CakePHP-XHProf"><img src="https://secure.travis-ci.org/renan/CakePHP-XHProf.png?branch=master" alt="Build Status"></a>
 </h1>
 
 <p>Plugin that quickly enables XHProf profiling for your CakePHP application.</p>
 
-<h2>Requirements</h2>
+<h2>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
 
 <ul>
 <li>PHP 5.3+</li>
 <li>CakePHP 2.2+</li>
 <li>XHProf</li>
-</ul><h2>Installation</h2>
+</ul><h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
 
-<h3>Manual</h3>
+<h3>
+<a name="manual" class="anchor" href="#manual"><span class="octicon octicon-link"></span></a>Manual</h3>
 
 <ol>
-<li>Download <a href="http://github.com/renansaddam/CakePHP-XHProf-Plugin/zipball/master">http://github.com/renansaddam/CakePHP-XHProf-Plugin/zipball/master</a>
+<li>Download <a href="http://github.com/renan/CakePHP-XHProf/zipball/master">http://github.com/renan/CakePHP-XHProf/zipball/master</a>
 </li>
 <li>Unzip the downloaded file</li>
-<li>Move the contents to <code>app/Plugin/XHProf</code>
+<li>Move the contents to <code>Plugin/XHProf</code>
 </li>
-</ol><h3>Git Submodule</h3>
+</ol><h3>
+<a name="git-submodule" class="anchor" href="#git-submodule"><span class="octicon octicon-link"></span></a>Git Submodule</h3>
 
-<div class="highlight"><pre>git submodule add git://github.com/renansaddam/CakePHP-XHProf-Plugin.git app/Plugin/XHProf
+<div class="highlight highlight-bash"><pre>git submodule add git://github.com/renan/CakePHP-XHProf.git Plugin/XHProf
 git submodule update --init
 </pre></div>
 
-<h3>Git Clone</h3>
+<h3>
+<a name="git-clone" class="anchor" href="#git-clone"><span class="octicon octicon-link"></span></a>Git Clone</h3>
 
-<div class="highlight"><pre>git clone git://github.com/renansaddam/CakePHP-XHProf-Plugin.git app/Plugin/XHProf
+<div class="highlight highlight-bash"><pre>git clone git://github.com/renan/CakePHP-XHProf.git Plugin/XHProf
 </pre></div>
 
-<h3>Composer / Packagist</h3>
+<h3>
+<a name="composer--packagist" class="anchor" href="#composer--packagist"><span class="octicon octicon-link"></span></a>Composer / Packagist</h3>
 
-<p>Extra information can be found at <a href="https://packagist.org/packages/renansaddam/cakephp-xhprof-plugin">Packagist</a>.</p>
+<p>Extra information can be found at <a href="https://packagist.org/packages/renan/cakephp-xhprof">Packagist</a>.</p>
 
-<div class="highlight"><pre><span class="p">{</span>
+<p>This would install the latest 0.1 version to <code>Plugin/XHProf</code>:</p>
+
+<div class="highlight highlight-json"><pre><span class="p">{</span>
     <span class="nt">"require"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">"renansaddam/cakephp-xhprof-plugin"</span><span class="p">:</span> <span class="s2">"0.1.*"</span>
-    <span class="p">},</span>
-    <span class="nt">"extra"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">"installer-paths"</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">"Plugin/XHProf/"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"renansaddam/cakephp-xhprof-plugin"</span><span class="p">]</span>
-        <span class="p">}</span>
+        <span class="nt">"renan/cakephp-xhprof"</span><span class="p">:</span> <span class="s2">"0.1.*"</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
-<h2>Configuration</h2>
+<h2>
+<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h2>
 
 <p>The basic configuration consists in loading the plugin and pointing where the <code>xhprof_lib</code> directory is located on your system.</p>
 
-<p>On your <code>app/Config/bootstrap.php</code> file:</p>
+<p>On your <code>Config/bootstrap.php</code> file:</p>
 
-<div class="highlight"><pre><span class="c1">// Load XHProf Plugin</span>
+<div class="highlight highlight-php"><pre><span class="c1">// Load XHProf Plugin</span>
 <span class="nx">CakePlugin</span><span class="o">::</span><span class="na">load</span><span class="p">(</span><span class="s1">'XHProf'</span><span class="p">);</span>
 
 <span class="c1">// XHProf Configuration</span>
@@ -107,7 +115,7 @@ git submodule update --init
 <code>replaceRunId</code>: Placeholder used to replace the run id in order to display a link in the page, set <code>false</code> to disable, default is <code>%XHProfRunId%</code>. Read the usage for more information</li>
 </ul><p>All options example:</p>
 
-<div class="highlight"><pre><span class="nx">Configure</span><span class="o">::</span><span class="na">write</span><span class="p">(</span><span class="s1">'XHProf'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+<div class="highlight highlight-php"><pre><span class="nx">Configure</span><span class="o">::</span><span class="na">write</span><span class="p">(</span><span class="s1">'XHProf'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">'library'</span> <span class="o">=&gt;</span> <span class="s1">'/usr/local/Cellar/php54-xhprof/270b75d/xhprof_lib'</span><span class="p">,</span>
     <span class="s1">'namespace'</span> <span class="o">=&gt;</span> <span class="s1">'myapp'</span><span class="p">,</span>
     <span class="s1">'flags'</span> <span class="o">=&gt;</span> <span class="nx">XHPROF_FLAGS_CPU</span> <span class="o">|</span> <span class="nx">XHPROF_FLAGS_MEMORY</span><span class="p">,</span>
@@ -119,20 +127,22 @@ git submodule update --init
 <span class="p">));</span>
 </pre></div>
 
-<h2>Usage</h2>
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
 
-<h3>Dispatcher Filter</h3>
+<h3>
+<a name="dispatcher-filter" class="anchor" href="#dispatcher-filter"><span class="octicon octicon-link"></span></a>Dispatcher Filter</h3>
 
-<p>Just include the <code>XHProfDispatcher</code> on your dispatcher filters list on <code>app/Config/bootstrap.php</code>:</p>
+<p>Just include the <code>XHProfDispatcher</code> on your dispatcher filters list on <code>Config/bootstrap.php</code>:</p>
 
-<div class="highlight"><pre><span class="nx">Configure</span><span class="o">::</span><span class="na">write</span><span class="p">(</span><span class="s1">'Dispatcher.filters.xhprof'</span><span class="p">,</span> <span class="s1">'XHProf.XHProfDispatcher'</span><span class="p">);</span>
+<div class="highlight highlight-php"><pre><span class="nx">Configure</span><span class="o">::</span><span class="na">write</span><span class="p">(</span><span class="s1">'Dispatcher.filters.xhprof'</span><span class="p">,</span> <span class="s1">'XHProf.XHProfDispatcher'</span><span class="p">);</span>
 </pre></div>
 
 <p>By default it will try replace <code>%XHProfRunId%</code> to the saved run id from the page's output. It allows you to include a link to the xhprof report on the page.</p>
 
-<p>On your <code>app/View/Layouts/default.ctp</code>:</p>
+<p>On your <code>View/Layouts/default.ctp</code>:</p>
 
-<div class="highlight"><pre><span class="nv">$url</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span>
+<div class="highlight highlight-php"><pre><span class="nv">$url</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span>
     <span class="s1">'/url/to/xhprof_html/index.php?run=%s&amp;source=%s'</span><span class="p">,</span>
     <span class="nx">Configure</span><span class="o">::</span><span class="na">read</span><span class="p">(</span><span class="s1">'XHProf.replaceRunId'</span><span class="p">),</span>
     <span class="nx">Configure</span><span class="o">::</span><span class="na">read</span><span class="p">(</span><span class="s1">'XHProf.namespace'</span><span class="p">)</span>
@@ -140,14 +150,15 @@ git submodule update --init
 <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">(</span><span class="s1">'XHProf Output'</span><span class="p">,</span> <span class="nv">$url</span><span class="p">);</span>
 </pre></div>
 
-<h3>Manual</h3>
+<h3>
+<a name="manual-1" class="anchor" href="#manual-1"><span class="octicon octicon-link"></span></a>Manual</h3>
 
 <p>This method is very useful when profiling specific points on your code.
 For that, just use the <code>XHProf</code> class to assist you.</p>
 
 <p>Example:</p>
 
-<div class="highlight"><pre><span class="c1">// Declare the class location</span>
+<div class="highlight highlight-php"><pre><span class="c1">// Declare the class location</span>
 <span class="nx">App</span><span class="o">::</span><span class="na">uses</span><span class="p">(</span><span class="s1">'XHProf'</span><span class="p">,</span> <span class="s1">'XHProf.Lib'</span><span class="p">);</span>
 
 <span class="c1">// Start the profiler</span>
@@ -165,13 +176,16 @@ For that, just use the <code>XHProf</code> class to assist you.</p>
 
 <p><em>Note</em>: There are two ways to stop the profiler as explained above. However only one can be used at each run.</p>
 
-<h2>Changelog</h2>
+<h2>
+<a name="changelog" class="anchor" href="#changelog"><span class="octicon octicon-link"></span></a>Changelog</h2>
 
-<h3>0.1.0 (2012-11-03)</h3>
+<h3>
+<a name="010-2012-11-03" class="anchor" href="#010-2012-11-03"><span class="octicon octicon-link"></span></a>0.1.0 (2012-11-03)</h3>
 
 <p>Initial release</p>
 
-<h2>License</h2>
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>Copyright (c) 2012 Renan Gonçalves</p>
 
@@ -193,13 +207,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.</p>
       </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
     </div>
-    <footer>
-      <p>Project maintained by <a href="https://github.com/renansaddam">renansaddam</a></p>
-      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
-    </footer>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-              <script type="text/javascript">
+		          <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
