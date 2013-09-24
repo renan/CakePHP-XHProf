@@ -1,4 +1,4 @@
-# CakePHP XHProf Plugin [![Build Status](https://secure.travis-ci.org/renansaddam/CakePHP-XHProf-Plugin.png?branch=master)](http://travis-ci.org/renansaddam/CakePHP-XHProf-Plugin)
+# CakePHP XHProf Plugin [![Build Status](https://secure.travis-ci.org/renan/CakePHP-XHProf.png?branch=master)](http://travis-ci.org/renan/CakePHP-XHProf)
 
 Plugin that quickly enables XHProf profiling for your CakePHP application.
 
@@ -12,33 +12,33 @@ Plugin that quickly enables XHProf profiling for your CakePHP application.
 
 ### Manual
 
-1. Download http://github.com/renansaddam/CakePHP-XHProf-Plugin/zipball/master
+1. Download http://github.com/renan/CakePHP-XHProf/zipball/master
 2. Unzip the downloaded file
 3. Move the contents to `Plugin/XHProf`
 
 ### Git Submodule
 
 ```bash
-git submodule add git://github.com/renansaddam/CakePHP-XHProf-Plugin.git Plugin/XHProf
+git submodule add git://github.com/renan/CakePHP-XHProf.git Plugin/XHProf
 git submodule update --init
 ```
 
 ### Git Clone
 
 ```bash
-git clone git://github.com/renansaddam/CakePHP-XHProf-Plugin.git Plugin/XHProf
+git clone git://github.com/renan/CakePHP-XHProf.git Plugin/XHProf
 ```
 
 ### Composer / Packagist
 
-Extra information can be found at [Packagist](https://packagist.org/packages/renansaddam/cakephp-xhprof-plugin).
+Extra information can be found at [Packagist](https://packagist.org/packages/renan/cakephp-xhprof).
 
 This would install the latest 0.1 version to `Plugin/XHProf`:
 
 ```json
 {
 	"require": {
-		"renansaddam/cakephp-xhprof-plugin": "0.1.*"
+		"renan/cakephp-xhprof": "0.1.*"
 	}
 }
 ```

@@ -14,7 +14,7 @@ before_script:
   - sh -c "cd vendors/xhprof/extension && phpize && ./configure --enable-xhprof && make && sudo make install"
   - echo -ne "[xdebug]\nextension=xhprof.so\nxhprof.output_dir=/tmp" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"`
   - echo 'Configure::write("XHProf.library", dirname(APP) . "/vendors/xhprof/xhprof_lib");' >> app/Config/bootstrap.php
-  - cp -R ../CakePHP-XHProf-Plugin plugins/XHProf
+  - cp -R ../CakePHP-XHProf plugins/XHProf
   - echo "<phpunit>
       <filter>
         <whitelist processUncoveredFilesFromWhitelist=\"true\">
