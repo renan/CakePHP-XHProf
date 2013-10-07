@@ -15,7 +15,7 @@ class XHProfDispatcher extends DispatcherFilter {
  * @param CakeEvent $event
  * @return void
  */
-	public function beforeDispatch($event) {
+	public function beforeDispatch(CakeEvent $event) {
 		XHProf::start();
 	}
 
@@ -24,7 +24,7 @@ class XHProfDispatcher extends DispatcherFilter {
  *
  * @return mixed Void or modified response if replaceRunId is defined
  */
-	public function afterDispatch($event) {
+	public function afterDispatch(CakeEvent $event) {
 		$runId = XHProf::finish();
 		$replaceRunId = Configure::read('XHProf.replaceRunId');
 
