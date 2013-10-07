@@ -3,13 +3,16 @@ language: php
 php:
   - 5.3
   - 5.4
+  - 5.5
 
 env:
+  - CAKE_VERSION=2.2.9
+  - CAKE_VERSION=2.3.10
   - CAKE_VERSION=master
-  - CAKE_VERSION=2.3
+  - CAKE_VERSION=2.5
 
 before_script:
-  - git clone --depth 1 git://github.com/cakephp/cakephp ../cakephp && cd ../cakephp && git checkout $CAKE_VERSION
+  - git clone --depth 1 git://github.com/cakephp/cakephp --branch $CAKE_VERSION ../cakephp && cd ../cakephp
   - git clone --depth 1 git://github.com/facebook/xhprof.git vendors/xhprof
   - sh -c "cd vendors/xhprof/extension && phpize && ./configure --enable-xhprof && make && sudo make install"
   - echo -ne "[xdebug]\nextension=xhprof.so\nxhprof.output_dir=/tmp" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"`
