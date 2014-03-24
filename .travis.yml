@@ -11,6 +11,13 @@ env:
   - CAKE_VERSION=master
   - CAKE_VERSION=2.5
 
+matrix:
+  exclude:
+    - php: 5.4
+      env: CAKE_VERSION=2.2.9
+    - php: 5.5
+      env: CAKE_VERSION=2.2.9
+
 before_script:
   - git clone --depth 1 git://github.com/cakephp/cakephp --branch $CAKE_VERSION ../cakephp && cd ../cakephp
   - git clone --depth 1 git://github.com/facebook/xhprof.git vendors/xhprof
