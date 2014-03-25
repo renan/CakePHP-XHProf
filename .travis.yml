@@ -11,14 +11,14 @@ env:
   - CAKE_VERSION=master
 
 before_script:
-  - composer global require 'phpunit/phpunit=3.7.33'
   - git clone --depth 1 git://github.com/cakephp/cakephp --branch $CAKE_VERSION ../cakephp && cd ../cakephp
-  - ln -s ~/.composer/vendor/phpunit/phpunit/PHPUnit vendors/PHPUnit
   - git clone --depth 1 git://github.com/facebook/xhprof.git vendors/xhprof
   - sh -c "cd vendors/xhprof/extension && phpize && ./configure --enable-xhprof && make && sudo make install"
   - echo -ne "[xdebug]\nextension=xhprof.so\nxhprof.output_dir=/tmp" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"`
   - echo 'Configure::write("XHProf.library", dirname(APP) . "/vendors/xhprof/xhprof_lib");' >> app/Config/bootstrap.php
   - cp -R ../CakePHP-XHProf plugins/XHProf
+  - cp plugins/XHProf/.coveralls.yml .coveralls.yml
+  - mkdir -p build/logs
   - echo "<phpunit>
       <filter>
         <whitelist processUncoveredFilesFromWhitelist=\"true\">
@@ -30,12 +30,20 @@ before_script:
         </whitelist>
       </filter>
       <logging>
-        <log type=\"coverage-text\" target=\"php://stdout\" showUncoveredFiles=\"false\" />
+        <log type=\"coverage-clover\" target=\"build/logs/clover.xml\" />
       </logging>
     </phpunit>" > phpunit.xml
+  - composer self-update
+  - composer init --no-interaction
+  - composer require --dev satooshi/php-coveralls:dev-master
+  - composer global require 'phpunit/phpunit=3.7.33'
+  - ln -s ~/.composer/vendor/phpunit/phpunit/PHPUnit vendors/PHPUnit
 
 script:
   - ./lib/Cake/Console/cake test XHProf AllXHProf
+
+after_script:
+  - ./vendor/bin/coveralls
 
 notifications:
   email: false

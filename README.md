@@ -1,4 +1,8 @@
-# CakePHP XHProf Plugin [![Build Status](https://secure.travis-ci.org/renan/CakePHP-XHProf.png?branch=master)](http://travis-ci.org/renan/CakePHP-XHProf)
+# CakePHP XHProf Plugin
+
+[![Build Status](https://secure.travis-ci.org/renan/CakePHP-XHProf.png?branch=master)](http://travis-ci.org/renan/CakePHP-XHProf)
+[![Coverage Status](https://coveralls.io/repos/renan/CakePHP-XHProf/badge.png)](https://coveralls.io/r/renan/CakePHP-XHProf)
+
 
 Plugin that quickly enables XHProf profiling for your CakePHP application.
 
