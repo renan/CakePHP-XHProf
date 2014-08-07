@@ -20,9 +20,8 @@ matrix:
 
 before_script:
   - composer global require 'phpunit/phpunit=3.7.33'
-  - ln -s ~/.composer/vendor/phpunit/phpunit/PHPUnit vendors/PHPUnit
-
   - git clone --depth 1 git://github.com/cakephp/cakephp --branch $CAKE_VERSION ../cakephp && cd ../cakephp
+  - ln -s ~/.composer/vendor/phpunit/phpunit/PHPUnit vendors/PHPUnit
   - git clone --depth 1 git://github.com/facebook/xhprof.git vendors/xhprof
   - sh -c "cd vendors/xhprof/extension && phpize && ./configure --enable-xhprof && make && sudo make install"
   - echo -ne "[xdebug]\nextension=xhprof.so\nxhprof.output_dir=/tmp" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"`
