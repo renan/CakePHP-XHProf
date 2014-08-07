@@ -53,7 +53,7 @@ class XHProf {
 		}
 
 		// Merge default configuration into provided options
-		$options = array_merge(Configure::read('XHProf'), $options);
+		$options += (array)Configure::read('XHProf');
 
 		// Start profiling
 		xhprof_enable($options['flags'], array(
@@ -113,7 +113,7 @@ class XHProf {
 		}
 
 		// Merge base configuration
-		$options = array_merge(self::$_baseConfig, Configure::read('XHProf'));
+		$options = (array)Configure::read('XHProf') + self::$_baseConfig;
 		Configure::write('XHProf', $options);
 
 		// Include libraries
@@ -136,4 +136,5 @@ class XHProf {
 		// All good to go
 		self::$_initiated = true;
 	}
+
 }
