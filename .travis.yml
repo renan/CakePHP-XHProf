@@ -19,6 +19,7 @@ matrix:
       env: CAKE_VERSION=2.2.9
 
 before_script:
+  - composer global require 'phpunit/phpunit=3.7.33'
   - git clone --depth 1 git://github.com/cakephp/cakephp --branch $CAKE_VERSION ../cakephp && cd ../cakephp
   - git clone --depth 1 git://github.com/facebook/xhprof.git vendors/xhprof
   - sh -c "cd vendors/xhprof/extension && phpize && ./configure --enable-xhprof && make && sudo make install"
