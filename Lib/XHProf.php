@@ -9,7 +9,7 @@ class XHProf {
 /**
  * Whether it initiated or not
  *
- * @var boolean
+ * @var bool
  */
 	protected static $_initiated = false;
 
@@ -32,7 +32,7 @@ class XHProf {
 /**
  * Whether profiling has started or not
  *
- * @var boolean
+ * @var bool
  */
 	protected static $_started = false;
 
@@ -67,7 +67,7 @@ class XHProf {
 /**
  * Whether profiling has started or not
  *
- * @return boolean
+ * @return bool
  */
 	public static function started() {
 		return self::$_started;
@@ -96,7 +96,7 @@ class XHProf {
 
 		// Save the run
 		$xhprof = new XHProfRuns_Default();
-		$runId  = $xhprof->save_run($data, Configure::read('XHProf.namespace'));
+		$runId = $xhprof->save_run($data, Configure::read('XHProf.namespace'));
 
 		return $runId;
 	}
@@ -124,7 +124,7 @@ class XHProf {
 				$path . 'xhprof_runs.php',
 			);
 			foreach ($files as $file) {
-				if (!include($file)) {
+				if (!include $file) {
 					throw new RuntimeException(sprintf(
 						'Couldn\'t include library file: %s.',
 						$file

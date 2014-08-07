@@ -7,6 +7,7 @@ App::uses('XHProf', 'XHProf.Lib');
  *
  */
 class TestXHProf extends XHProf {
+
 	public static function reset() {
 		self::$_initiated = false;
 
@@ -14,4 +15,5 @@ class TestXHProf extends XHProf {
 			self::stop();
 		}
 	}
+
 }
