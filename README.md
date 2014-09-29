@@ -9,6 +9,7 @@ Plugin that quickly enables XHProf profiling for your CakePHP application.
 * XHProf
 
 ## Installation
+First, make sure you enabled the xhprof extension and downloaded [phacility/xhprof](https://github.com/phacility/xhprof).
 
 ### Manual
 
@@ -42,10 +43,11 @@ This would install the latest 0.1 version to `Plugin/XHProf`:
 	}
 }
 ```
+You might want to use "require-dev" if you only plan to use this for development.
 
 ## Configuration
 
-The basic configuration consists in loading the plugin and pointing where the `xhprof_lib` directory is located on your system.
+The basic configuration consists of loading the plugin and pointing where the `xhprof_lib` directory is located on your system.
 
 On your `Config/bootstrap.php` file:
 
@@ -71,14 +73,14 @@ All options example:
 
 ```php
 Configure::write('XHProf', array(
-	'library' => '/usr/local/Cellar/php54-xhprof/270b75d/xhprof_lib',
-	'namespace' => 'myapp',
-	'flags' => XHPROF_FLAGS_CPU | XHPROF_FLAGS_MEMORY,
-	'ignored_functions' => array(
-		'my_function',
-		'my_other_function',
-	),
-	'replaceRunId' => false,
+		'library' => '/usr/local/Cellar/php54-xhprof/270b75d/xhprof_lib',
+		'namespace' => 'myapp',
+		'flags' => XHPROF_FLAGS_CPU | XHPROF_FLAGS_MEMORY,
+		'ignored_functions' => array(
+			'my_function',
+			'my_other_function',
+		),
+		'replaceRunId' => false,
 ));
 ```
 
@@ -86,13 +88,14 @@ Configure::write('XHProf', array(
 
 ### Dispatcher Filter
 
-Just include the `XHProfDispatcher` on your dispatcher filters list on `Config/bootstrap.php`:
+Just include the `XHProfDispatcher` in your dispatcher filters list on `Config/bootstrap.php`:
 
 ```php
 Configure::write('Dispatcher.filters.xhprof', 'XHProf.XHProfDispatcher');
 ```
 
-By default it will try replace `%XHProfRunId%` to the saved run id from the page's output. It allows you to include a link to the xhprof report on the page.
+By default it will try to replace `%XHProfRunId%` with the saved run id from the page's output.
+It allows you to include a link to the xhprof report on the page.
 
 On your `View/Layouts/default.ctp`:
 
@@ -104,6 +107,25 @@ $url = sprintf(
 );
 echo $this->Html->link('XHProf Output', $url);
 ```
+
+#### DebugKit Panel
+If you are using [DebugKit](https://github.com/cakephp/debug_kit), you can use the provided panel here.
+
+Make sure you include html config of the URL endpoint of the xhprof_html folder:
+```php
+Configure::write('XHProf', array(
+		'library' => '/usr/local/Cellar/php54-xhprof/270b75d/xhprof_lib',
+		'html' => 'http://path/to/xhprof_html',
+));
+```
+
+Then you can add the panel in your DebugKit components setup:
+```php
+public $components = array('DebugKit.Toolbar' => array(
+		'panels' => array('XHProf.XHProf'));
+```
+
+Done. It should now display the new panel with the link to the result of this page output.
 
 ### Manual
 

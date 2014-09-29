@@ -36,4 +36,5 @@ class XHProfDispatcher extends DispatcherFilter {
 			return $event->data['response'];
 		}
 	}
+
 }
