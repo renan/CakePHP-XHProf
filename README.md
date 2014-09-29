@@ -5,7 +5,7 @@ Plugin that quickly enables XHProf profiling for your CakePHP application.
 ## Requirements
 
 * PHP 5.3+
-* CakePHP 2.2+ (2.3+ for PHP 5.4+)
+* CakePHP 2.3+
 * XHProf
 
 ## Installation
