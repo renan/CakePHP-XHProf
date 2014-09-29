@@ -32,6 +32,7 @@ before_script:
         <whitelist processUncoveredFilesFromWhitelist=\"true\">
           <directory suffix=\".php\">$(pwd)/plugins/XHProf</directory>
           <exclude>
+            <file>$(pwd)/plugins/XHProf/Lib/Panel/XHProfPanel.php</file>
             <directory suffix=\".php\">$(pwd)/plugins/XHProf/Test</directory>
           </exclude>
         </whitelist>
