@@ -31,8 +31,11 @@
       </header>
       <section>
         <h1>
-<a name="cakephp-xhprof-plugin-" class="anchor" href="#cakephp-xhprof-plugin-"><span class="octicon octicon-link"></span></a>CakePHP XHProf Plugin <a href="http://travis-ci.org/renan/CakePHP-XHProf"><img src="https://secure.travis-ci.org/renan/CakePHP-XHProf.png?branch=master" alt="Build Status"></a>
-</h1>
+<a name="cakephp-xhprof-plugin" class="anchor" href="#cakephp-xhprof-plugin"><span class="octicon octicon-link"></span></a>CakePHP XHProf Plugin</h1>
+
+<p><a href="http://travis-ci.org/renan/CakePHP-XHProf"><img src="https://secure.travis-ci.org/renan/CakePHP-XHProf.png?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/r/renan/CakePHP-XHProf"><img src="https://coveralls.io/repos/renan/CakePHP-XHProf/badge.png" alt="Coverage Status"></a>
+<a href="https://packagist.org/packages/renan/cakephp-xhprof"><img src="https://poser.pugx.org/renan/cakephp-xhprof/v/stable.svg" alt="Latest Stable Version"></a></p>
 
 <p>Plugin that quickly enables XHProf profiling for your CakePHP application.</p>
 
@@ -41,10 +44,12 @@
 
 <ul>
 <li>PHP 5.3+</li>
-<li>CakePHP 2.2+</li>
+<li>CakePHP 2.3+</li>
 <li>XHProf</li>
 </ul><h2>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>First, make sure you enabled the xhprof extension and downloaded <a href="https://github.com/phacility/xhprof">phacility/xhprof</a>.</p>
 
 <h3>
 <a name="manual" class="anchor" href="#manual"><span class="octicon octicon-link"></span></a>Manual</h3>
@@ -82,10 +87,12 @@ git submodule update --init
 <span class="p">}</span>
 </pre></div>
 
+<p>You might want to use "require-dev" if you only plan to use this for development.</p>
+
 <h2>
 <a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h2>
 
-<p>The basic configuration consists in loading the plugin and pointing where the <code>xhprof_lib</code> directory is located on your system.</p>
+<p>The basic configuration consists of loading the plugin and pointing where the <code>xhprof_lib</code> directory is located on your system.</p>
 
 <p>On your <code>Config/bootstrap.php</code> file:</p>
 
@@ -133,12 +140,13 @@ git submodule update --init
 <h3>
 <a name="dispatcher-filter" class="anchor" href="#dispatcher-filter"><span class="octicon octicon-link"></span></a>Dispatcher Filter</h3>
 
-<p>Just include the <code>XHProfDispatcher</code> on your dispatcher filters list on <code>Config/bootstrap.php</code>:</p>
+<p>Just include the <code>XHProfDispatcher</code> in your dispatcher filters list on <code>Config/bootstrap.php</code>:</p>
 
 <div class="highlight highlight-php"><pre><span class="nx">Configure</span><span class="o">::</span><span class="na">write</span><span class="p">(</span><span class="s1">'Dispatcher.filters.xhprof'</span><span class="p">,</span> <span class="s1">'XHProf.XHProfDispatcher'</span><span class="p">);</span>
 </pre></div>
 
-<p>By default it will try replace <code>%XHProfRunId%</code> to the saved run id from the page's output. It allows you to include a link to the xhprof report on the page.</p>
+<p>By default it will try to replace <code>%XHProfRunId%</code> with the saved run id from the page's output.
+It allows you to include a link to the xhprof report on the page.</p>
 
 <p>On your <code>View/Layouts/default.ctp</code>:</p>
 
@@ -149,6 +157,30 @@ git submodule update --init
 <span class="p">);</span>
 <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">(</span><span class="s1">'XHProf Output'</span><span class="p">,</span> <span class="nv">$url</span><span class="p">);</span>
 </pre></div>
+
+<h4>
+<a name="debugkit-panel" class="anchor" href="#debugkit-panel"><span class="octicon octicon-link"></span></a>DebugKit Panel</h4>
+
+<p>If you are using <a href="https://github.com/cakephp/debug_kit">DebugKit</a>, you can use the provided panel here.</p>
+
+<p>Make sure you include html config of the URL endpoint of the xhprof_html folder:</p>
+
+<div class="highlight highlight-php"><pre><span class="nx">Configure</span><span class="o">::</span><span class="na">write</span><span class="p">(</span><span class="s1">'XHProf'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'library'</span> <span class="o">=&gt;</span> <span class="s1">'/usr/local/Cellar/php54-xhprof/270b75d/xhprof_lib'</span><span class="p">,</span>
+    <span class="s1">'html'</span> <span class="o">=&gt;</span> <span class="s1">'http://path/to/xhprof_html'</span><span class="p">,</span>
+<span class="p">));</span>
+</pre></div>
+
+<p>Then you can add the panel in your DebugKit components setup:</p>
+
+<div class="highlight highlight-php"><pre><span class="k">public</span> <span class="nv">$components</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'DebugKit.Toolbar'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">'panels'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">'XHProf.XHProf'</span><span class="p">)</span>
+    <span class="p">),</span>
+<span class="p">);</span>
+</pre></div>
+
+<p>Done. It should now display the new panel with the link to the result of this page output.</p>
 
 <h3>
 <a name="manual-1" class="anchor" href="#manual-1"><span class="octicon octicon-link"></span></a>Manual</h3>
@@ -180,6 +212,13 @@ For that, just use the <code>XHProf</code> class to assist you.</p>
 <a name="changelog" class="anchor" href="#changelog"><span class="octicon octicon-link"></span></a>Changelog</h2>
 
 <h3>
+<a name="100-2014-09-30" class="anchor" href="#100-2014-09-30"><span class="octicon octicon-link"></span></a>1.0.0 (2014-09-30)</h3>
+
+<ul>
+<li>Added a DebugKit panel instead of messing with the layout file.
+Thanks to <a href="https://github.com/dereuromark" class="user-mention">@dereuromark</a> for the patch.</li>
+<li>Collecting code coverage metrics and reporting to coveralls</li>
+</ul><h3>
 <a name="010-2012-11-03" class="anchor" href="#010-2012-11-03"><span class="octicon octicon-link"></span></a>0.1.0 (2012-11-03)</h3>
 
 <p>Initial release</p>
@@ -187,7 +226,7 @@ For that, just use the <code>XHProf</code> class to assist you.</p>
 <h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
-<p>Copyright (c) 2012 Renan Gonçalves</p>
+<p>Copyright (c) 2014 Renan Gonçalves</p>
 
 <p>Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -208,7 +247,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.</p>
       </section>
       <footer>
-        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+        <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
       </footer>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
