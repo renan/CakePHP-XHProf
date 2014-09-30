@@ -2,6 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/renan/CakePHP-XHProf.png?branch=master)](http://travis-ci.org/renan/CakePHP-XHProf)
 [![Coverage Status](https://coveralls.io/repos/renan/CakePHP-XHProf/badge.png)](https://coveralls.io/r/renan/CakePHP-XHProf)
+[![Latest Stable Version](https://poser.pugx.org/renan/cakephp-xhprof/v/stable.svg)](https://packagist.org/packages/renan/cakephp-xhprof)
 
 
 Plugin that quickly enables XHProf profiling for your CakePHP application.
@@ -77,14 +78,14 @@ All options example:
 
 ```php
 Configure::write('XHProf', array(
-		'library' => '/usr/local/Cellar/php54-xhprof/270b75d/xhprof_lib',
-		'namespace' => 'myapp',
-		'flags' => XHPROF_FLAGS_CPU | XHPROF_FLAGS_MEMORY,
-		'ignored_functions' => array(
-			'my_function',
-			'my_other_function',
-		),
-		'replaceRunId' => false,
+	'library' => '/usr/local/Cellar/php54-xhprof/270b75d/xhprof_lib',
+	'namespace' => 'myapp',
+	'flags' => XHPROF_FLAGS_CPU | XHPROF_FLAGS_MEMORY,
+	'ignored_functions' => array(
+		'my_function',
+		'my_other_function',
+	),
+	'replaceRunId' => false,
 ));
 ```
 
@@ -118,15 +119,18 @@ If you are using [DebugKit](https://github.com/cakephp/debug_kit), you can use t
 Make sure you include html config of the URL endpoint of the xhprof_html folder:
 ```php
 Configure::write('XHProf', array(
-		'library' => '/usr/local/Cellar/php54-xhprof/270b75d/xhprof_lib',
-		'html' => 'http://path/to/xhprof_html',
+	'library' => '/usr/local/Cellar/php54-xhprof/270b75d/xhprof_lib',
+	'html' => 'http://path/to/xhprof_html',
 ));
 ```
 
 Then you can add the panel in your DebugKit components setup:
 ```php
-public $components = array('DebugKit.Toolbar' => array(
-		'panels' => array('XHProf.XHProf'));
+public $components = array(
+	'DebugKit.Toolbar' => array(
+		'panels' => array('XHProf.XHProf')
+	),
+);
 ```
 
 Done. It should now display the new panel with the link to the result of this page output.
@@ -159,13 +163,19 @@ _Note_: There are two ways to stop the profiler as explained above. However only
 
 ## Changelog
 
+### 1.0.0 (2014-09-30)
+
+- Added a DebugKit panel instead of messing with the layout file.
+  Thanks to @dereuromark for the patch.
+- Collecting code coverage metrics and reporting to coveralls
+
 ### 0.1.0 (2012-11-03)
 
 Initial release
 
 ## License
 
-Copyright (c) 2012 Renan Gonçalves
+Copyright (c) 2014 Renan Gonçalves
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
