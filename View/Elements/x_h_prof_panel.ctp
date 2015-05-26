@@ -13,5 +13,7 @@ if (Configure::read('XHProf.html')) {
 		Configure::read('XHProf.namespace')
 	);
 	echo $this->Html->link('XHProf Output', $url);
+} else {
+	echo 'RunId: <b>' . Configure::read('XHProf.replaceRunId') . '</b>';
 }
 ?>
